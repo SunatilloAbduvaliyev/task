@@ -22,8 +22,9 @@ class ApiProvider extends ApiClient {
 
       if (response.statusCode == 200) {
         myResponse.data = (response.data["items"] as List?)
-                ?.map((e) => CardModel.fromJson(e)) ??
+                ?.map((e) => CardModel.fromJson(e)).toList() ??
             [];
+        debugPrint(myResponse.data.toString());
       }
     } catch (_) {
       debugPrint("asdfasd");
@@ -49,7 +50,7 @@ class ApiProvider extends ApiClient {
           },
         ),
       );
-      debugPrint(response.data.toString());
+      // debugPrint(response.data.toString());
 
       if (response.statusCode == 200) {
         myResponse.data = "Query oky";
