@@ -5,9 +5,9 @@ import 'package:task/bloc/card_bloc.dart';
 import 'package:task/bloc/card_event.dart';
 import 'package:task/data/api_provider/api_provider.dart';
 import 'package:task/screen/home_screen.dart';
+import 'package:task/screen/payment/payment_screen.dart';
 
 void main(List<String> args) {
-
   ApiProvider apiProvider = ApiProvider();
   runApp(
     MultiBlocProvider(
