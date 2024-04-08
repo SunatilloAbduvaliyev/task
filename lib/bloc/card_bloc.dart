@@ -23,18 +23,27 @@ class CardBloc extends Bloc<CardEvent, CardState> {
   }
 
   _solveCard(SolveCardEvent solveCardEvent, Emitter<CardState> emit) async {
-    solveCardEvent.cardModelOn = solveCardEvent.cardModelOn.copyWith(
-        amount: solveCardEvent.cardModelOn.amount - solveCardEvent.money);
-    solveCardEvent.cardModelTo = solveCardEvent.cardModelTo.copyWith(
-        amount: solveCardEvent.cardModelTo.amount + solveCardEvent.money);
-
-    MyResponse myResponse = await apiProvider.updateCards(
-        cardModel: [solveCardEvent.cardModelOn, solveCardEvent.cardModelTo]);
-
-    if (myResponse.errorText.isNotEmpty) {
-      emit(ErrorState(errorText: "Error :("));
+    // solveCardEvent.cardModelOn = solveCardEvent.cardModelOn.copyWith(
+    //     amount: solveCardEvent.cardModelOn.amount - solveCardEvent.money);
+    // solveCardEvent.cardModelTo = solveCardEvent.cardModelTo.copyWith(
+    //     amount: solveCardEvent.cardModelTo.amount + solveCardEvent.money);
+    if (solveCardEvent.cardModelOn.amount < solveCardEvent.money) {
+      emit(ErrorState(errorText: "Pul kam :("));
+      await Future.delayed(const Duration(seconds: 1));
+      add(CallCardEvent());
     } else {
-      emit(OkState(cards: myResponse.data));
+      MyResponse myResponse = await apiProvider.updateCards(cardModel: [
+        solveCardEvent.cardModelOn.copyWith(
+            amount: solveCardEvent.cardModelOn.amount - solveCardEvent.money),
+        solveCardEvent.cardModelTo.copyWith(
+            amount: solveCardEvent.cardModelTo.amount + solveCardEvent.money)
+      ]);
+
+      if (myResponse.errorText.isNotEmpty) {
+        emit(ErrorState(errorText: "Error :("));
+      } else {
+        add(CallCardEvent());
+      }
     }
   }
 }
