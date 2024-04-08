@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:task/screen/home_screen.dart';
+import 'package:task/screen/payment/payment_screen.dart';
 
 void main(List<String> args) {
   runApp(const MyApp());
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child:const HelloScreen(),
+      child:const PaymentScreen(),
     );
   }
 }
