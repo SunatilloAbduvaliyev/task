@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:task/data/model.dart';
+import 'package:task/screen/payment/payment_screen.dart';
 
 import '../utils/app-Images.dart';
 import '../utils/app_colors.dart';
@@ -25,6 +26,11 @@ class _HelloScreenState extends State<HelloScreen> {
         appBar: AppBar(
           automaticallyImplyLeading: true,
           backgroundColor: AppColors.c_2A3256,
+          actions: [
+            IconButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const PaymentScreen()));
+            }, icon: const Icon(Icons.sensor_door_outlined,color: Colors.white,))
+          ],
         ),
         body: Column(
           children: [
