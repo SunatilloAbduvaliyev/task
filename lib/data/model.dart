@@ -1,6 +1,4 @@
-import 'dart:ui';
 
-import 'package:flutter/material.dart';
 
 class CardModel {
   final String uuid;
@@ -9,7 +7,7 @@ class CardModel {
   final String cardNumber;
   final String ownerName;
   final double amount;
-  final Color color;
+  final String color;
   final String bankName;
   final bool isMain;
 
@@ -32,7 +30,7 @@ class CardModel {
     String? cardNumber,
     String? ownerName,
     double? amount,
-    Color? color,
+    String? color,
     String? bankName,
     bool? isMain,
   }) {
@@ -51,7 +49,7 @@ class CardModel {
 
   Map<String, dynamic> toJson() {
     return {
-      "color": color.value, // Color obyektining .value xususiyati orqali rangni int ko'rinishida olish
+      "color": color, // Color obyektining .value xususiyati orqali rangni int ko'rinishida olish
       "amount": amount,
       "card_number": cardNumber,
       "expire_date": expireDate,
@@ -64,7 +62,7 @@ class CardModel {
 
   Map<String, dynamic> toJsonForUpdate() {
     return {
-      "color": color.value, // Color obyektining .value xususiyati orqali rangni int ko'rinishida olish
+      "color": color, // Color obyektining .value xususiyati orqali rangni int ko'rinishida olish
       "_uuid": uuid,
       "amount": amount,
       "card_number": cardNumber,
@@ -79,8 +77,8 @@ class CardModel {
   factory CardModel.fromJson(Map<String, dynamic> json) {
     return CardModel(
       uuid: json["_uuid"] as String? ?? "",
-      color: Color(json["color"] as int? ?? 0), // Int qiymatni Color obyektiga o'zgartirish
-      amount: json["amount"] as double? ?? 0.0,
+      color: json["color"] as String? ?? "", // Int qiymatni Color obyektiga o'zgartirish
+      amount: (json["amount"] as num?)?.toDouble() ?? 0.0,
       cardNumber: json["card_number"] as String? ?? "",
       expireDate: json["expire_date"] as String? ?? "",
       bankName: json["bank_name"] as String? ?? "", // Mavjud key nomi bo'lib ban_name emas, bank_name bo'lishi kerak
@@ -91,7 +89,7 @@ class CardModel {
   }
 
   static initial() => CardModel(
-    color: Colors.transparent, // Standart rangni o'rnating
+    color: "", // Standart rangni o'rnating
     amount: 0.0,
     cardNumber: "",
     expireDate: "",

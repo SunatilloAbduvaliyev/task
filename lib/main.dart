@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:task/bloc/card_bloc.dart';
+import 'package:task/bloc/card_event.dart';
 import 'package:task/data/api_provider/api_provider.dart';
 import 'package:task/screen/home_screen.dart';
 import 'package:task/screen/payment/payment_screen.dart';
@@ -11,7 +12,7 @@ void main(List<String> args) {
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_)=>CardBloc(apiProvider:apiProvider),)
+        BlocProvider(create: (_)=>CardBloc(apiProvider:apiProvider)..add(CallCardEvent()),)
       ],
       child: const MyApp(),
     ),
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child: const PaymentScreen(),
+      child: const HelloScreen(),
     );
   }
 }

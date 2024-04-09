@@ -1,4 +1,6 @@
 class MyResponse {
   dynamic data;
-  String errorText = "";
+  String errorText;
+
+  MyResponse({this.data, this.errorText = ''});
 }

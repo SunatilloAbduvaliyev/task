@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class CardModel {
@@ -90,16 +91,16 @@ class CardModel {
   }
 
   static initial() => CardModel(
-        color: Colors.orange,
-        amount: 0.0,
-        cardNumber: "",
-        expireDate: "",
-        bankName: "",
-        cardName: "",
-        isMain: false,
-        ownerName: "",
-        uuid: "",
-      );
+    color: Colors.orange,
+    amount: 0.0,
+    cardNumber: "",
+    expireDate: "",
+    bankName: "",
+    cardName: "",
+    isMain: false,
+    ownerName: "",
+    uuid: "",
+  );
 }
 
 List<Color> colors = [

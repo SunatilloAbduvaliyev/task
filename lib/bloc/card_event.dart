@@ -1,8 +1,20 @@
-import 'package:task/data/models/card/card_model.dart';
+import '../data/model.dart';
 
 abstract class CardEvent {}
 
 class CallCardEvent extends CardEvent {}
+
+class InsertCardEvent extends CardEvent {
+  CardModel cardModel;
+
+  InsertCardEvent({required this.cardModel});
+}
+
+class DeleteCardEvent extends CardEvent {
+  CardModel cardModel;
+
+  DeleteCardEvent({required this.cardModel});
+}
 
 class SolveCardEvent extends CardEvent {
   CardModel cardModelOn;
@@ -11,6 +23,6 @@ class SolveCardEvent extends CardEvent {
 
   SolveCardEvent(
       {required this.cardModelOn,
-      required this.cardModelTo,
-      required this.money});
+        required this.cardModelTo,
+        required this.money});
 }

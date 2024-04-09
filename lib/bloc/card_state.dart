@@ -1,4 +1,4 @@
-import 'package:task/data/models/card/card_model.dart';
+import '../data/model.dart';
 
 abstract class CardState {}
 
