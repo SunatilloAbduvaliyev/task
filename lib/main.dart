@@ -6,8 +6,11 @@ import 'package:task/bloc/card_event.dart';
 import 'package:task/data/api_provider/api_provider.dart';
 import 'package:task/screen/home_screen.dart';
 import 'package:task/screen/payment/payment_screen.dart';
+import 'package:task/utils/notification.dart';
 
-void main(List<String> args) {
+Future<void> main(List<String> args) async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await NotificationService.initializeNotification();
   ApiProvider  apiProvider = ApiProvider();
   runApp(
     MultiBlocProvider(
@@ -21,7 +24,7 @@ void main(List<String> args) {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
+  static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(

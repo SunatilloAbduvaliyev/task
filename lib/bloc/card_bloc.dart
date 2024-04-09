@@ -53,14 +53,13 @@ class CardBloc extends Bloc<CardEvent, CardState> {
     //     amount: solveCardEvent.cardModelOn.amount - solveCardEvent.money);
     // solveCardEvent.cardModelTo = solveCardEvent.cardModelTo.copyWith(
     //     amount: solveCardEvent.cardModelTo.amount + solveCardEvent.money);
-
+    emit(LoadingState());
     MyResponse myResponse = await apiProvider.updateCards(cardModel: [
       solveCardEvent.cardModelOn.copyWith(
           amount: solveCardEvent.cardModelOn.amount - solveCardEvent.money),
       solveCardEvent.cardModelTo.copyWith(
           amount: solveCardEvent.cardModelTo.amount + solveCardEvent.money)
     ]);
-
     if (myResponse.errorText.isNotEmpty) {
       emit(ErrorState(errorText: "Error :("));
     } else {

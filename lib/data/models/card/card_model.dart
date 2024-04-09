@@ -23,7 +23,6 @@ class CardModel {
     required this.ownerName,
     required this.uuid,
   });
-
   CardModel copyWith({
     String? uuid,
     String? cardName,

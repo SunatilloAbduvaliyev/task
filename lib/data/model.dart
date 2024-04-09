@@ -56,7 +56,7 @@ class CardModel {
       "bank_name": bankName,
       "card_name": cardName,
       "is_main": isMain,
-      "owner_name": ownerName,
+      "ower_name": ownerName,
     };
   }
 
@@ -70,7 +70,7 @@ class CardModel {
       "bank_name": bankName,
       "card_name": cardName,
       "is_main": isMain,
-      "owner_name": ownerName,
+      "ower_name": ownerName,
     };
   }
 
@@ -84,7 +84,7 @@ class CardModel {
       bankName: json["bank_name"] as String? ?? "", // Mavjud key nomi bo'lib ban_name emas, bank_name bo'lishi kerak
       cardName: json["card_name"] as String? ?? "",
       isMain: json["is_main"] as bool? ?? false,
-      ownerName: json["owner_name"] as String? ?? "",
+      ownerName: json["ower_name"] as String? ?? "",
     );
   }
 

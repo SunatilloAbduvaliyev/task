@@ -6,13 +6,13 @@ import '../model.dart';
 import '../models/my_respons/my_respons.dart';
 import 'api_clint.dart';
 
-String token = "-HiR8E4726kmzBbUClaexQdoTKoWNkoiauJUOvbUrj3940KWSQ";
+String token = "MWFQ7KGiboE2jEuyxsuLgR_77k8vptlkDuLaygC9hx0Fx23etA";
 
 class ApiProvider extends ApiClient {
   Future<MyResponse> callCards() async {
     try {
       Response response = await dio.get(
-        "https://crudapi.co.uk/api/v1/products",
+        "https://crudapi.co.uk/api/v1/card",
         options: Options(
           headers: {
             "Authorization": "Bearer $token",
@@ -45,7 +45,7 @@ class ApiProvider extends ApiClient {
           cardModel[0].toJsonForUpdate(),
           cardModel[1].toJsonForUpdate(),
         ]),
-        "/api/v1/products",
+        "https://crudapi.co.uk/api/v1/card",
         options: Options(
           headers: {
             "Authorization": "Bearer $token",
@@ -69,7 +69,7 @@ class ApiProvider extends ApiClient {
     try {
       Response response = await dio.post(
         data: jsonEncode([cardModel.toJson()]),
-        "/api/v1/products",
+        "https://crudapi.co.uk/api/v1/card",
         options: Options(
           headers: {
             "Authorization": "Bearer $token",
@@ -95,7 +95,7 @@ class ApiProvider extends ApiClient {
         data: jsonEncode([
           {"_uuid": cardModel.uuid}
         ]),
-        "/api/v1/products",
+        "https://crudapi.co.uk/api/v1/card",
         options: Options(
           headers: {
             "Authorization": "Bearer $token",

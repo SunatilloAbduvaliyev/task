@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task/bloc/card_bloc.dart';
 import 'package:task/bloc/card_state.dart';
+import 'package:task/screen/add_card/add_card_screen.dart';
 import 'package:task/screen/global_widget/card_button.dart';
 import 'package:task/screen/payment/payment_screen.dart';
 import '../utils/app_colors.dart';
@@ -43,7 +44,7 @@ class _HelloScreenState extends State<HelloScreen> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const PaymentScreen()));
+                          builder: (context) => const AddCardScreen()));
                 },
                 icon: const Icon(
                   Icons.add,
