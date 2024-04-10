@@ -66,6 +66,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                     ),
                     10.boxH(),
                     GlobalTextField(
+                      length: 19,
                       title: "xxxx xxxx xxxx xxxx",
                       controller: cardNumberController,
                       isCardNumber: true,
@@ -96,7 +97,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                     ),
                     10.boxH(),
                     GlobalTextField(
-                      title: "Amount",
+                      title: "1 000 000 000 0000",
                       controller: amountController,
                       isAmount: true,
                     ),

@@ -53,7 +53,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       itemBuilder: (context, index) {
                         return CardButton(
                           cardModel: state.cards[index],
-                          isPayment: true,
                         );
                       },
                     ),
@@ -102,7 +101,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       itemBuilder: (context, index) {
                         return CardButton(
                           cardModel: state.cards[index],
-                          isPayment: true,
                         );
                       },
                     ),

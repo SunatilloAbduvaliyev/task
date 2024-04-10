@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GlobalTextField extends StatefulWidget {
   final String title;
   final TextEditingController controller;
   final bool isAmount, isCardNumber;
-
+   final int?  length;
    const GlobalTextField({
     super.key,
     required this.title,
     required this.controller,
     this.isAmount = false,
-    this.isCardNumber = false,
+    this.isCardNumber = false,  this.length,
   });
 
   @override
@@ -22,6 +23,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLength: widget.length,
       validator: (value){
         if(value == null || value.isEmpty){
           return "Please enter ${widget.title}";
@@ -29,7 +31,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
         return null;
       },
       onChanged: (value){
-        if(widget.isCardNumber){
+        if(widget.isCardNumber && widget.isAmount ){
           if (value.isNotEmpty && value.length % 5 == 0) {
             final int cursorPos = widget.controller.selection.baseOffset + 1;
             widget.controller.value = TextEditingValue(
@@ -38,6 +40,17 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
             );
           }
         }
+        if (widget.isAmount) {
+          if (value.isNotEmpty && value.length > 1 && value.length % 4 == 1) {
+            final int cursorPos = widget.controller.selection.baseOffset + 1;
+            widget.controller.value = TextEditingValue(
+              text: value.substring(0, value.length - 1) + ' ' + value.substring(value.length - 1),
+              selection: TextSelection.collapsed(offset: cursorPos),
+            );
+          }
+        }
+
+
       },
 
       controller: widget.controller,

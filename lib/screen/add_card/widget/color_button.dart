@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:task/utils/extension.dart';
 
@@ -28,26 +26,29 @@ class _ColorButtonState extends State<ColorButton> {
       children: List.generate(colors.length, (index) => Expanded(
         child: Stack(
           children: [
-            Container(
-              width: 70.w,
-              height: 70.h,
-              decoration:BoxDecoration(
-                color: Color(hexStringToHexInt(colors[index])),
-                shape: BoxShape.circle
-              ) ,
-              child: GestureDetector(
-                onTap: (){
-                  active = index;
-                  widget.color.call(colors[index]);
-                  setState(() {});
-                },
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width: 70.w,
+                height: 70.h,
+                decoration:BoxDecoration(
+                  color: Color(hexStringToHexInt(colors[index])),
+                  shape: BoxShape.circle
+                ) ,
+                child: GestureDetector(
+                  onTap: (){
+                    active = index;
+                    widget.color.call(colors[index]);
+                    setState(() {});
+                  },
+                ),
               ),
             ),
 
             Positioned(
-              right: 0,
+              right: 21,
               bottom: 0,
-              top: 30,
+              top: 0,
               child: Icon(
               Icons.check,
               color: active == index? Colors.white : Color(hexStringToHexInt(colors[index])),
